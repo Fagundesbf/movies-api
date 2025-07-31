@@ -1,0 +1,28 @@
+<div *ngFor="let movie of movieDetails">
+  <div class="movie-card">
+    <h2>
+      {{ movie.nome }}
+    </h2>
+    <div>
+      <label>Descrição: </label>
+      <span>{{ movie.descricao }}</span>
+    </div>
+    <div>
+      <label>Genero: </label>
+      <span>{{ movie.genero }} </span>
+    </div>
+    <div>
+      <label>Ano: </label><span>{{ movie.anoLancamento }}</span>
+    </div>
+    <div class="button-favorite">
+      <button (click)="selectFavorite(movie)">
+        <span *ngIf="movie.favorite; else notFavorite">
+          <span style="color: red; font-size: 40px">&#9829; </span></span
+        >
+        <ng-template #notFavorite>
+          <span style="font-size: 40px">&#9829;</span>
+        </ng-template>
+      </button>
+    </div>
+  </div>
+</div>

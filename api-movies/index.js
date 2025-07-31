@@ -4,6 +4,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
 const movies = require('./data/movies');
 const app = express();
+const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 
 // Chave secreta para JWT (em produção, deve estar em variável de ambiente)
@@ -15,6 +16,9 @@ const AUTH_PASSWORD = 'teste';
 
 // Middleware para parsing JSON
 app.use(express.json());
+
+// Habilita CORS para qualquer origem (em dev, ok)
+app.use(cors());
 
 // Configuração do Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));

@@ -1,0 +1,14 @@
+<app-header-list
+  (action)="callEvent($event)"
+  [titleButton]="'Voltar para home'"
+  [redirect]="'home'"
+  [title]="'Meus favoritos'"
+/>
+<ng-container *ngIf="favorites$ | async as movie">
+  <ng-container *ngIf="movie.length > 0; else notFavorites">
+    <app-list [movieDetails]="movie" />
+  </ng-container>
+  <ng-template #notFavorites>
+    <span>Não possui nenhum item como favorito!</span>
+  </ng-template>
+</ng-container>

@@ -1,0 +1,9 @@
+<app-header-list
+  (action)="callEvent($event)"
+  [titleButton]="'Meus favoritos'"
+  [title]="'Listagem de filmes'"
+  [redirect]="'favorite'"
+/>
+<ng-container *ngIf="movies$ | async as movie">
+  <app-list [movieDetails]="movie" />
+</ng-container>

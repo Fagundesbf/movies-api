@@ -1,0 +1,28 @@
+<div>
+  <div class="card-login">
+    <form [formGroup]="form" (ngSubmit)="callButtonLogin()">
+      <div>
+        <h2>Login</h2>
+      </div>
+      <div>
+        <label for="usuario">Usuário</label>
+        <input id="usuario" formControlName="usuario" type="text" />
+        <div
+          *ngIf="form.get('usuario')?.invalid && form.get('usuario')?.touched"
+        >
+          Usuário é obrigatório
+        </div>
+      </div>
+      <div>
+        <label for="senha">Senha</label>
+        <input id="senha" formControlName="senha" type="password" />
+        <div *ngIf="form.get('senha')?.invalid && form.get('senha')?.touched">
+          Senha é obrigatória
+        </div>
+      </div>
+      <div>
+        <button type="submit" [disabled]="form.invalid">Login</button>
+      </div>
+    </form>
+  </div>
+</div>
